@@ -20,13 +20,13 @@
 require("dotenv").config();
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const { APP_PORT } = process.env;
+const { PORT } = process.env;
 const { getTemperaments } = require('./src/controllers/temperamentsController');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   getTemperaments();
-  server.listen(APP_PORT, () => {
-    console.log('App listening at %s', APP_PORT); // eslint-disable-line no-console
+  server.listen(PORT, () => {
+    console.log('App listening at %s', PORT); // eslint-disable-line no-console
   });
 });
